@@ -1,0 +1,4 @@
+vendor/*
+book/
+.idea/
+composer.lock
