@@ -141,8 +141,7 @@ class YooReadSpider{
           'href'=>$post,
           'title'=>$title[0],
           'content'=>implode(PHP_EOL.PHP_EOL,$content)
-        ]
-        ]);
+        ]]);
       }
       usort($readList[$key],function ($a, $b) {
         return $this->getNumber($a['href']) - $this->getNumber($b['href']);
@@ -155,6 +154,19 @@ class YooReadSpider{
     $book  = new self($page);
     $bookName = $book->getBookInfo();
     echo $bookName[0]['name'] ;
+    $bookData = $book->getBookArray();
+    try{
+      $book->writeFile($bookData,$bookName[0]['name'],$bookName[0]['img']);
+    }catch (\Exception $e){
+      echo $e->getMessage();
+    }
+    return $bookData;
+  }
+  //静态方法保存一本书的md
+  static function saveBook($page){
+    $book  = new self($page);
+    $bookName = $book->getBookInfo();
+    echo $bookName[0]['name'];
     $bookData = $book->getBookArray();
     try{
       $book->writeFile($bookData,$bookName[0]['name'],$bookName[0]['img']);

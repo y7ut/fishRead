@@ -17,7 +17,7 @@ class YooRead extends Command {
   {
     $this
       ->setName('book:yooread')
-      ->setDescription('悠读文学专用')
+      ->setDescription('获取YooRead站点下的书籍(ノ￣▽￣)')
       ->setHelp('输入你想看的书的Url吧！')
       ->addArgument(
         'url',
